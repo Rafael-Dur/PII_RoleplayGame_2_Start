@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
 
-    public class Axe : IItem
+    public class Warhammer : IItem
     {
         private string name;
 
@@ -28,7 +28,7 @@ namespace RoleplayGame
         public bool MagicItem {get;}
 
 
-        public Axe(string name, int damage, int protection, string description)
+        public Warhammer(string name, int damage, int protection, string description)
         {
             this.name = name;
             this.damage = damage;

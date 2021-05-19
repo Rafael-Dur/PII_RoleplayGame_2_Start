@@ -1,61 +1,113 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
-    public class Dwarf
+    
+    public class Dwarf : ICharacter
     {
-        private int health = 100;
+        private string name;
+        public string Name {get; }
 
-        public Dwarf(string name)
-        {
-            this.Name = name;
-        }
-
-        public string Name { get; set; }
-
-        public Axe Axe { get; set; }
-
-        public Shield Shield { get; set; }
-
-        public Helmet Helmet { get; set; }
-
-        public int AttackValue
+        private int damage;
+        public int Damage {get;}
+    
+        private int initialHealth;
+        public int InitialHealth 
         {
             get
             {
-                return Axe.AttackValue;
+                return this.initialHealth = 100;
             }
         }
-
-        public int DefenseValue
-        {
-            get
-            {
-                return Shield.DefenseValue + Helmet.DefenseValue;
-            }
-        }
+        private int health;
 
         public int Health
         {
-            get
+            get{return this.health;}
+        }
+
+        public string Role {get; set;}
+
+        private List<IItem> inventary;
+        public List<IItem> Inventary{get;}
+
+    
+
+        public Dwarf(string name, int damage, string role)
+        {
+            this.name = name;
+            this.damage = damage;
+            this.health = initialHealth;
+            this.Role = role;
+            this.inventary = new List<IItem>();
+        }        
+        
+        //Este metodo ataca a un personaje:
+        public void Attack(ICharacter character)
+        {
+            Console.WriteLine($"{this.Name} ataca a {character.Name}");
+            character.RecieveAttack(this.TotalDamage());
+
+            if(character.Health <= 0)
             {
-                return this.health;
+                Console.WriteLine($"{character.Name} fue asesinado.");
             }
-            private set
+            else
             {
-                this.health = value < 0 ? 0 : value;
+                Console.WriteLine($"{character.Name} tiene {character.Health} de vida.");
             }
         }
 
-        public void ReceiveAttack(int power)
+        public void RecieveAttack(int damage)
         {
-            if (this.DefenseValue < power)
-            {
-                this.Health -= power - this.DefenseValue;
+                if(damage <= (this.health + this.TotalProtection()))
+                {
+                    this.health -= (damage - TotalProtection());
+                }
+                else
+                {
+                    this.health = 0;
+                }
             }
+
+        public void HealCharacter(ICharacter character)
+        {
+            character.Heal();
+            Console.WriteLine($"{character.Name} ahora tiene {character.Health} de vida.");
         }
 
-        public void Cure()
+        public void Heal()
         {
-            this.Health = 100;
+            throw new NotImplementedException();
+        }
+
+        public void Equip(IItem item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int TotalDamage()
+        {
+            int totalDamage = 0;
+            foreach(IItem item in inventary)
+            {
+                totalDamage += item.Damage;
+            }
+            return totalDamage;
+        }
+
+        public int TotalProtection()
+        {
+            int totalProtection = 0;
+            foreach(IItem item in inventary)
+            {
+                totalProtection += item.Protection;
+            }
+            return totalProtection;
         }
     }
+    
 }
+
