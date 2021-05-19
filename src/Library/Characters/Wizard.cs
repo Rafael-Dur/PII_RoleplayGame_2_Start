@@ -39,7 +39,6 @@ namespace RoleplayGame
         public string Role
         {
             get{return this.role;}
-            set{this.role = value;}
         }
 
         
@@ -58,24 +57,31 @@ namespace RoleplayGame
         {
             this.name = name;
             this.health = initialHealth;
-            this.Role = role;
+            this.role = role;
             this.inventary = new List<IItem>();
             this.SpellBook = spellBook;
         }
 
         public void Attack(ICharacter character)
         {
-            Console.WriteLine($"{this.Name} ataca a {character.Name}");
-            character.RecieveAttack(this.TotalDamage());
-
-            if(character.Health <= 0)
+            if(character.Health > 0)
             {
-                Console.WriteLine($"{character.Name} fue asesinado.");
+                Console.WriteLine($"{this.Name} ataca a {character.Name}");
+                character.RecieveAttack(this.TotalDamage());
+
+                if(character.Health <= 0)
+                {
+                    Console.WriteLine($"{character.Name} fue asesinado.");
+                }
+                else
+                {
+                    Console.WriteLine($"{character.Name} tiene {character.Health} de vida.");
+                }
             }
             else
-            {
-                Console.WriteLine($"{character.Name} tiene {character.Health} de vida.");
-            }
+                {
+                    Console.WriteLine($"No se puede atacar a {character.Name} ya que se encuentra muerto");
+                }
         }
 
         public void RecieveAttack(int damage)
@@ -97,8 +103,21 @@ namespace RoleplayGame
         }
 
         public void Heal()
+        {   
+            if(this.health > 0)
+            {
+                this.health = initialHealth;
+            }
+            else
+                Console.WriteLine($"El {this.name} esta muerto. No se puede curar.");
+        }
+
+        public void Respawn()
         {
-            this.health = this.initialHealth;
+            if(this.health <= 0)
+            {
+                this.health = initialHealth;
+            }
         }
 
         public int TotalDamage()

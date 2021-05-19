@@ -34,7 +34,7 @@ namespace RoleplayGame
             this.damage = damage;
             this.protection = protection;
             this.Description = description;
-            this.MagicItem = true;
+            this.MagicItem = false;
         }
     }
 }

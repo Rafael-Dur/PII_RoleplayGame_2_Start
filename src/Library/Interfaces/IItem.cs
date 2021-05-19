@@ -12,9 +12,8 @@ namespace RoleplayGame
 
           int Protection {get;}
 
-          string Description {get; set;}
+          string Description {get; }
 
           bool MagicItem {get;}
-
      }
 }
