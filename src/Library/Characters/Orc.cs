@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
     
-    public class Dwarf : ICharacter
+    public class Orc : ICharacter
     {
         private string name;
         public string Name {get; }
@@ -35,9 +35,9 @@ namespace RoleplayGame
 
     
 
-        public Dwarf(string name, int damage, string role)
+        public Orc(string name, int damage, string role)
         {
-            this.name = name;
+            this.Name = name;
             this.damage = damage;
             this.health = initialHealth;
             this.Role = role;
@@ -92,7 +92,9 @@ namespace RoleplayGame
                 this.health = initialHealth;
             }
             else
-                Console.WriteLine($"El {this.name} esta muerto. No se puede curar.");
+                {
+                    Console.WriteLine($"El {this.name} esta muerto. No se puede curar.");
+                }
         }
 
         public void Respawn()
@@ -115,6 +117,7 @@ namespace RoleplayGame
                 } 
         }
 
+        
         public int TotalDamage()
         {
             int totalDamage = 0;

@@ -14,7 +14,7 @@ namespace RoleplayGame
 
           int Damage {get;} 
 
-          string Role {get; set;}
+          string Role {get; }
 
           List<IItem> Inventary {get;}
           void Attack(ICharacter character);
@@ -24,6 +24,8 @@ namespace RoleplayGame
           void HealCharacter(ICharacter character);
 
           void Heal();
+
+          void Respawn();
 
           void Equip(IItem item);
 
