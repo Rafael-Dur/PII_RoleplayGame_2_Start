@@ -7,7 +7,7 @@ namespace RoleplayGame
     
     public class Elf : ICharacter
     {
-        private string name;
+         private string name;
         public string Name 
         {
             get
@@ -17,7 +17,13 @@ namespace RoleplayGame
         }
 
         private int damage;
-        public int Damage {get;}
+        public int Damage
+        {
+            get
+            {
+                return this.damage;
+            }
+        }        
     
         private int initialHealth;
         public int InitialHealth 
@@ -34,10 +40,20 @@ namespace RoleplayGame
             get{return this.health;}
         }
 
-        public string Role {get; }
+        private string role;
+        public string Role
+        {
+            get
+            {
+                return this.role;
+            }
+        }
 
         private List<IItem> inventary;
-        public List<IItem> Inventary{get;}
+        public List<IItem> Inventary
+        {
+            get{return this.inventary;}
+        }
 
     
 
@@ -46,7 +62,7 @@ namespace RoleplayGame
             this.name = name;
             this.damage = damage;
             this.health = initialHealth;
-            this.Role = role;
+            this.role = role;
             this.inventary = new List<IItem>();
         }        
         
@@ -123,7 +139,19 @@ namespace RoleplayGame
                 } 
         }
 
-        
+        public void UnEquip(IItem item)
+        {   
+            if(inventary.Contains(item))
+            {
+                this.inventary.Remove(item);
+                Console.WriteLine($"Se ha removido el item {item.Name} del personaje {this.Name}.");
+            }
+            else
+                {
+                    Console.WriteLine($"El {item.Name} no se puede removew ya que no se encuentra añadido al personaje.");
+                } 
+        }
+
         public int TotalDamage()
         {
             int totalDamage = 0;
@@ -131,6 +159,8 @@ namespace RoleplayGame
             {
                 totalDamage += item.Damage;
             }
+            totalDamage += this.damage;
+            
             return totalDamage;
         }
 

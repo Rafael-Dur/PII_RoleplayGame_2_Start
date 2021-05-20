@@ -29,6 +29,8 @@ namespace RoleplayGame
 
           void Equip(IItem item);
 
+          void UnEquip(IItem item);
+
           int TotalDamage();
 
           int TotalProtection();
