@@ -77,28 +77,32 @@ namespace Test.Library
             Assert.IsNotNull(wizard.SpellBook);
         }
 
-/*         [Test]
+        [Test]
         public void AttackTest()
         //Se prueba el metodo de ataque en un orco
         {
             //Act
             wizard.LearnSpell(spell);
+            wizard.LearnSpell(spell);
+            wizard.LearnSpell(spell);
+            wizard.LearnSpell(spell);
             wizard.Attack(orc);
 
             //Assert
-            Assert.AreEqual(120, orc.Health);
+            Assert.AreEqual(190, orc.Health);
 
-        } */
+        } 
 
-        /* [Test]
+        [Test]
         public void ReceiveAttackTest()
         //Se prueba el metodo para recibir un ataque
         {
             //Act
-            wizard.ReceiveAttack(10);
+            wizard.LearnSpell(spell);
+            wizard.RecieveAttack(50);
             //Assert
-            Assert.AreEqual(90, wizard.Health);
-        }  */
+            Assert.AreEqual(60, wizard.Health);
+        } 
 
 
         [Test]
@@ -156,7 +160,7 @@ namespace Test.Library
             Assert.True(spellBook.spells.Contains(spell));
         }
 
-        /* [Test]
+        [Test]
         public void inventaryMustStartEmpty()
         {
             Assert.AreEqual(0, wizard.Inventary.Count);
@@ -169,6 +173,6 @@ namespace Test.Library
             wizard.Equip(magicStaff);
             //Assert
             Assert.AreEqual(1, wizard.Inventary.Count);
-        } */
+        } 
     }
 }
