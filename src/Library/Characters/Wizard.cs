@@ -142,7 +142,7 @@ namespace RoleplayGame
 
         public void Equip(IItem item)
         {
-            if(item.MagicItem)
+            if(item.MagicItem && item != typeof(SpellBook))
             {
                 this.inventary.Add(item);
             }
