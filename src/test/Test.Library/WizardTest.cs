@@ -24,7 +24,7 @@ namespace Test.Library
             magicStaff = new MagicStaff("Varita", 10, "Hace hechizos");
             spellBook = new SpellBook("Libro", "Tiene hechizos");
             spell = new Spell("Wingardium Leviosa", "Hace levitar objetos", 10, 10);
-            wizard = new Wizard("Hermione", "Mago",spellBook);
+            wizard = new Wizard("Hermione", "Mago", spellBook);
             
             shield = new Shield ("GoldenShield", 0, 30,"Escudo Protector");
             sword = new Sword ("Katana", 50, 0,"Corte Fugaz");
@@ -77,7 +77,7 @@ namespace Test.Library
             Assert.IsNotNull(wizard.SpellBook);
         }
 
-/*         [Test]
+        [Test]
         public void AttackTest()
         //Se prueba el metodo de ataque en un orco
         {
@@ -86,19 +86,18 @@ namespace Test.Library
             wizard.Attack(orc);
 
             //Assert
-            Assert.AreEqual(120, orc.Health);
+            Assert.AreEqual(220, orc.Health);
+        }
 
-        } */
-
-        /* [Test]
+        [Test]
         public void ReceiveAttackTest()
         //Se prueba el metodo para recibir un ataque
         {
             //Act
-            wizard.ReceiveAttack(10);
+            wizard.RecieveAttack(10);
             //Assert
             Assert.AreEqual(90, wizard.Health);
-        }  */
+        }
 
 
         [Test]
@@ -156,7 +155,7 @@ namespace Test.Library
             Assert.True(spellBook.spells.Contains(spell));
         }
 
-        /* [Test]
+         [Test]
         public void inventaryMustStartEmpty()
         {
             Assert.AreEqual(0, wizard.Inventary.Count);
@@ -169,6 +168,6 @@ namespace Test.Library
             wizard.Equip(magicStaff);
             //Assert
             Assert.AreEqual(1, wizard.Inventary.Count);
-        } */
+        }
     }
 }
