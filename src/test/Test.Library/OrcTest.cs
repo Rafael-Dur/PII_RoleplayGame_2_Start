@@ -102,44 +102,47 @@ namespace Test.Library
             Assert.AreEqual(expectedProtection, calcProtection);
         }
 
-        /*[Test]
+        [Test]
         public void AtackCheckHealthEnemy()
         //Se prueba que el valor total de la vida del enemigo sea el esperado despues de recibir un ataque por el orco.
         {  
             //Act
             dwarf.Respawn();
             int expectedHealthLeftEnemy = 25;
-
+            orc.Equip(sword);
+            orc.Equip(shield);
+            dwarf.Equip(axe);
+            dwarf.Equip(warhammer);
             orc.Attack(dwarf);
 
             //Assert
             Assert.AreEqual(expectedHealthLeftEnemy,dwarf.Health);
-        } */
+        } 
 
-        /* [Test]
+        [Test]
         public void ReceiveAttackCheck()
         //Se prueba que el valor total de la vida (con su protección) orco sea el esperado despues de recibir un dañp ataque en especifico.
         {   
             //Act
             int expectedOrcHealth = 120;
+            orc.Equip(shield);
             orc.RecieveAttack(110);
         
             //Assert
             Assert.AreEqual(expectedOrcHealth,orc.Health);
-        } */
+        }
 
-       /*  [Test]
+        [Test]
         public void HealDwarfCheck()
         // Se comprueba que el el método para curar a un mago del enano funcione correctamente. //
 
         {
             //Act
-            dwarf.Respawn();
             orc.Attack(dwarf);
             orc.HealCharacter(dwarf);
             int newHealth = dwarf.Health;
             //Assert
             Assert.AreEqual(dwarf.InitialHealth, newHealth);
-        } */
+        }
     }
 }

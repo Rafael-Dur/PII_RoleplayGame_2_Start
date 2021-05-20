@@ -25,12 +25,12 @@ namespace RoleplayGame
             }
         }        
     
-        private int initialHealth;
+        private int initialHealth = 100;
         public int InitialHealth 
         {
             get
             {
-                return this.initialHealth = 100;
+                return this.initialHealth;
             }
         }
         private int health;
@@ -54,8 +54,6 @@ namespace RoleplayGame
         {
             get{return this.inventary;}
         }
-
-    
 
         public Dwarf(string name, int damage, string role)
         {
@@ -83,6 +81,7 @@ namespace RoleplayGame
                     Console.WriteLine($"{character.Name} tiene {character.Health} de vida.");
                 }
             }
+
             else
                 {
                     Console.WriteLine($"No se puede atacar a {character.Name} ya que se encuentra muerto");
@@ -122,6 +121,10 @@ namespace RoleplayGame
             if(this.health <= 0)
             {
                 this.health = initialHealth;
+            }
+            else
+            {
+                this.health = this.Health;
             }
         }
 
