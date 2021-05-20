@@ -50,6 +50,7 @@ namespace RoleplayGame
             }
         }
 
+
         public MagicStaff(string name, int damage, string description)
         {
             this.name = name;

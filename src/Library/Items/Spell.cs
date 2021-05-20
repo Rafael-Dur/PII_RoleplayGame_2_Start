@@ -49,6 +49,7 @@ namespace RoleplayGame
             }
         }
 
+
         public Spell(string name, string description, int damage, int protection)
         {
             this.name = name;

@@ -34,6 +34,7 @@ namespace RoleplayGame
         }
         public List<Spell> spells;
 
+
         public SpellBook(string name, string description)
         {
             this.name = name;            

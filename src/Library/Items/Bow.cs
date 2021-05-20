@@ -18,19 +18,43 @@ namespace RoleplayGame
 
         private int damage;
 
-        public int Damage{get;}
+        public int Damage
+        {
+            get
+            {
+                return this.damage;
+            }
+        }
 
         private int protection;
 
-        public int Protection{get;}
+        public int Protection
+        {
+            get
+            {
+                return this.protection;
+            }
+        }
 
         private string description;
 
-        public string Description {get; }
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+        }
 
         private bool magicItem;
 
-        public bool MagicItem {get;}
+        public bool MagicItem
+        {
+            get
+            {
+                return this.magicItem;
+            }
+        }
 
 
         public Bow(string name, int damage, int protection, string description)
@@ -39,7 +63,7 @@ namespace RoleplayGame
             this.damage = damage;
             this.protection = protection;
             this.description = description;
-            this.MagicItem = false;
+            this.magicItem = false;
         }
     }
 }

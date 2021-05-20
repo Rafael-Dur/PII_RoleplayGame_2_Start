@@ -42,7 +42,6 @@ namespace RoleplayGame
         }
 
         
-        
         private SpellBook spellBook;
         public SpellBook SpellBook
         {
@@ -50,8 +49,12 @@ namespace RoleplayGame
             set{this.spellBook = value;}
         }
 
-       private List<IItem> inventary;
-        public List<IItem> Inventary{get;}
+        private List<IItem> inventary;
+        public List<IItem> Inventary
+        {
+            get{return this.inventary;}
+        }
+        
 
         public Wizard(string name, string role, SpellBook spellBook)
         {
@@ -127,7 +130,7 @@ namespace RoleplayGame
             {
                 totalDamage += item.Damage;
             }
-            return totalDamage + this.SpellBook.Damage;
+            return totalDamage + this.SpellBook.Damage + this.damage;
         }
 
         public int TotalProtection()
@@ -142,10 +145,23 @@ namespace RoleplayGame
 
         public void Equip(IItem item)
         {
-            if(item.MagicItem && item != typeof(SpellBook))
+            if(item.MagicItem && item.GetType() != typeof(SpellBook))
             {
                 this.inventary.Add(item);
             }
+        }
+
+        public void UnEquip(IItem item)
+        {   
+            if(inventary.Contains(item))
+            {
+                this.inventary.Remove(item);
+                Console.WriteLine($"Se ha removido el item {item.Name} del personaje {this.Name}.");
+            }
+            else
+                {
+                    Console.WriteLine($"El {item.Name} no se puede removew ya que no se encuentra añadido al personaje.");
+                } 
         }
 
         public void LearnSpell(Spell spell)
