@@ -8,7 +8,13 @@ namespace RoleplayGame
     public class Elf : ICharacter
     {
         private string name;
-        public string Name {get; }
+        public string Name 
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
         private int damage;
         public int Damage {get;}
@@ -37,7 +43,7 @@ namespace RoleplayGame
 
         public Elf(string name, int damage, string role)
         {
-            this.Name = name;
+            this.name = name;
             this.damage = damage;
             this.health = initialHealth;
             this.Role = role;

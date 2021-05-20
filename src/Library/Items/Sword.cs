@@ -8,9 +8,13 @@ namespace RoleplayGame
     public class Sword : IItem
     {
         private string name;
-
-        public string Name{get;}
-
+        public string Name 
+        {
+            get
+            {
+                return this.name;
+            }
+        }
         private int damage;
 
         public int Damage{get;}
