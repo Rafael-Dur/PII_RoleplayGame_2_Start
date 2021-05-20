@@ -8,8 +8,13 @@ namespace RoleplayGame
     public class Shield : IItem
     {
         private string name;
-
-        public string Name{get;}
+        public string Name 
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
         private int damage;
 

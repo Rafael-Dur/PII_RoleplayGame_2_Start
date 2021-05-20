@@ -5,11 +5,16 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
 
-    public class InvisibilityCloak : IItem
+    public class Cloak : IItem
     {
         private string name;
-
-        public string Name{get;}
+        public string Name 
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
         private int damage;
 
@@ -28,13 +33,13 @@ namespace RoleplayGame
         public bool MagicItem {get;}
 
 
-        public InvisibilityCloak(string name, int damage, int protection, string description)
+        public Cloak(string name, int damage, int protection, string description)
         {
             this.name = name;
             this.damage = damage;
             this.protection = protection;
             this.Description = description;
-            this.MagicItem = false;
+            this.MagicItem = true;
         }
     }
 }
