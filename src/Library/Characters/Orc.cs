@@ -25,12 +25,12 @@ namespace RoleplayGame
             }
         }        
     
-        private int initialHealth;
+        private int initialHealth = 200;
         public int InitialHealth 
         {
             get
             {
-                return this.initialHealth = 200;
+                return this.initialHealth;
             }
         }
         private int health;
@@ -124,6 +124,10 @@ namespace RoleplayGame
             if(this.health <= 0)
             {
                 this.health = initialHealth;
+            }
+            else 
+            {
+                this.health += 0;
             }
         }
 

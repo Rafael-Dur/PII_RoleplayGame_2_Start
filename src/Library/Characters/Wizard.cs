@@ -23,10 +23,10 @@ namespace RoleplayGame
             get{return this.protection;}
         }      
        
-        private int initialHealth; 
+        private int initialHealth = 100; 
         public int InitialHealth
         {
-            get{return this.initialHealth = 100;}
+            get{return this.initialHealth;}
         }
         
         private int health;
