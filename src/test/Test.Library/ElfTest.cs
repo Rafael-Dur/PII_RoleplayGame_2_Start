@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -16,8 +16,8 @@ namespace Test.Library
         public void SetUp()
         {
             //Arrange
-            bow = new Bow("Arco gigante", 75, 0,"Tira fuego");
-            cloak = new Cloak("Capa maxima", 0, 80, "Invisibilidad");
+            bow = new Bow("Arco gigante", 75, "Tira fuego");
+            cloak = new Cloak("Capa maxima", 80, "Agilidad");
             elf = new Elf("Frank",15, "Escurridizo");
             spellBook = new SpellBook("Libro de Hechizos Oscuros","Hechizos oscuros");
             spell = new Spell("Lumos", "La varita enciende luz", 65, 0);
@@ -143,7 +143,15 @@ namespace Test.Library
             elf.HealCharacter(wizard);
             int newHealth = wizard.Health;
             //Assert
-            Assert.AreEqual(wizard.InitialHealth, newHealth);
+            Assert.AreEqual(100, newHealth);
         } 
+
+        [Test]
+        public void EquipNormalItemsTest()
+        // Se verifica que se añadan items al inventario del elfo correctamente.
+        {
+            elf.Equip(bow);
+            Assert.AreEqual(1, elf.Inventary.Count); 
+        }
     }
-} */
+}

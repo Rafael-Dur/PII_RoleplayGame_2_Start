@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -16,11 +16,11 @@ namespace Test.Library
         public void SetUp()
         {
             //Arrange
-            sword = new Sword("Espadon", 50, 0,"Corte Fugaz");
-            shield = new Shield("Escudo Dorado", 0, 30, "Escudazo");
+            sword = new Sword("Espadon", 50, "Corte Fugaz");
+            shield = new Shield("Escudo Dorado", 30, "Escudazo");
             orc = new Orc("Thor", 25, "Tanque");
-            axe = new Axe("Hacha", 50, 0,"Corte Rapaz");
-            warhammer = new Warhammer("Martillo de Guerra", 60, 0, "Martillazo");
+            axe = new Axe("Hacha", 50, "Corte Rapaz");
+            warhammer = new Warhammer("Martillo de Guerra", 60, "Martillazo");
             dwarf = new Dwarf("Wagner", 35,"Apoyo"); 
         }
 
@@ -135,14 +135,21 @@ namespace Test.Library
         [Test]
         public void HealDwarfCheck()
         // Se comprueba que el el método para curar a un mago del enano funcione correctamente. //
-
         {
             //Act
             orc.Attack(dwarf);
             orc.HealCharacter(dwarf);
             int newHealth = dwarf.Health;
             //Assert
-            Assert.AreEqual(dwarf.InitialHealth, newHealth);
+            Assert.AreEqual(100, newHealth);
+        }
+
+        [Test]
+        public void EquipNormalItemsTest()
+        // Se verifica que se añadan items al inventario del orco correctamente.
+        {
+            orc.Equip(axe);
+            Assert.AreEqual(1, orc.Inventary.Count); 
         }
     }
-} */
+}

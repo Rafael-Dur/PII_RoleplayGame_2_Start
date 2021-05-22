@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -26,8 +26,8 @@ namespace Test.Library
             spell = new Spell("Wingardium Leviosa", "Hace levitar objetos", 10, 10);
             wizard = new Wizard("Hermione", "Mago",spellBook);
             
-            shield = new Shield ("GoldenShield", 0, 30,"Escudo Protector");
-            sword = new Sword ("Katana", 50, 0,"Corte Fugaz");
+            shield = new Shield ("GoldenShield", 30,"Escudo Protector");
+            sword = new Sword ("Katana", 50, "Corte Fugaz");
             orc = new Orc ("Grom", 10, "Tanque");
             orc.Equip(shield);
             orc.Equip(sword);
@@ -171,8 +171,10 @@ namespace Test.Library
         {
             //Act
             wizard.Equip(magicStaff);
+            wizard.Equip(sword);
             //Assert
-            Assert.AreEqual(1, wizard.Inventary.Count);
+            Assert.AreEqual(2, wizard.Inventary.Count);
         } 
+
     }
-} */
+}

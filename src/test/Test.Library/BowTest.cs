@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -10,7 +10,7 @@ namespace Test.Library
         [SetUp]
         public void SetUp()
         {
-            bow = new Bow("Arco gigante", 75, 0,"Tira fuego");
+            bow = new Bow("Arco gigante", 75, "Tira fuego");
         }
 
 
@@ -38,12 +38,5 @@ namespace Test.Library
         {
             Assert.IsNotNull(bow.Name);
         }
-
-        [Test]
-        public void ItemNotMagic()
-        //Se prueba que no sea un item de daño magico sino que en cambio sea de daño fisico.
-        {
-            Assert.AreEqual(false,bow.MagicItem);
-        }
     }
-} */
+}

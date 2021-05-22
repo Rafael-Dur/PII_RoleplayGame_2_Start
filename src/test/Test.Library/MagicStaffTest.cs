@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -52,21 +52,5 @@ namespace Test.Library
         {
             Assert.AreEqual(10, magicStaff.Damage);
         }
-
-        [Test]        
-        public void MagicStaffProtectionMustBeZero()
-        //Se prueba que el magicStaff sea un elemento puramente ofensivo
-        {
-            Assert.AreEqual(0, magicStaff.Protection);
-        }
-
-        [Test]
-        public void MagicStaffIsMagicItem()
-        {
-            Assert.IsTrue(magicStaff.MagicItem);
-        }
-
     }
-
-
-} */
+}

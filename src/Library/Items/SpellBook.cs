@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
+    /*La clase SpellBook cumple con el patron Expert ya que es la clase experta 
+    en conocer el contenido de cada libro para poder cumplir con la responsabilidad 
+    de agregar o sacar hechizos.
+
+    Cumple con el principio SRP ya que la única razón de cambio seria cambiar la forma 
+    en la que se agregan o sacan hechizos.*/
+
     public class SpellBook : IMagicAttackItem, IMagicProtectionItem
     {
         public string Name{get; private set;}

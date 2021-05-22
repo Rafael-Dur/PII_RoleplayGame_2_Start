@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -22,12 +22,12 @@ namespace Test.Library
         public void SetUp()
         {
             //Arrange
-            sword = new Sword("Espada rústica", 50, 0, "Corte Fugaz");
-            shield = new Shield("Escudo desgastado", 0, 70, "Bloqueo");
+            sword = new Sword("Espada rústica", 50, "Corte Fugaz");
+            shield = new Shield("Escudo desgastado", 70, "Bloqueo");
             orc = new Orc("Azog", 25, "Tanque");
             
-            axe = new Axe("Executioner",50,5,"Corte decisivo");
-            warhammer = new Warhammer("Mjölnir", 60, 10, "Ultimatum");
+            axe = new Axe("Executioner",50, "Corte decisivo");
+            warhammer = new Warhammer("Mjölnir", 60, "Ultimatum");
             dwarf = new Dwarf("Thorin", 70, "Luchador"); 
 
             magicStaff = new MagicStaff("Báculo ancestral", 50, "Poder mágico");
@@ -109,8 +109,8 @@ namespace Test.Library
         {
             //Act
             dwarf.Equip(axe);
-            dwarf.Equip(warhammer);
-            int expectedProtection = 15;
+            dwarf.Equip(shield);
+            int expectedProtection = 70;
 
             int calcProtection = dwarf.TotalProtection();
 
@@ -138,8 +138,8 @@ namespace Test.Library
         //Se prueba que el valor total de la vida (con su protección) del enano sea el esperado despues de recibir un daño ataque en especifico.
         {   
             //Act
-            int expectedDwarfHealth = 5;
-            dwarf.Equip(axe);
+            int expectedDwarfHealth = 60;
+            dwarf.Equip(shield);
             dwarf.Equip(warhammer);
             dwarf.RecieveAttack(110);
         
@@ -157,7 +157,15 @@ namespace Test.Library
             dwarf.HealCharacter(orc);
             int newHealth = orc.Health;
             //Assert
-            Assert.AreEqual(orc.InitialHealth, newHealth);
+            Assert.AreEqual(200, newHealth);
+        }
+
+        [Test]
+        public void EquipNormalItemsTest()
+        // Se verifica que se añadan items al inventario del enano correctamente.
+        {
+            dwarf.Equip(axe);
+            Assert.AreEqual(1, dwarf.Inventary.Count); 
         }
     }
-} */
+}

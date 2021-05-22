@@ -7,37 +7,79 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Shield shield1 = new Shield ("Golden Shield", 75,"Escudo Protector");
-            Sword sword1 = new Sword ("Katana", 125,"Corte Fugaz");
+            Shield shield = new Shield ("Golden Shield", 75,"Escudo Protector");
+            Sword sword = new Sword ("Katana", 125,"Corte Fugaz");
 
             Orc orc = new Orc ("Grom", 25, "Tanque");
-            orc.Equip(sword1);
-            orc.Equip(shield1);
+            orc.Equip(sword);
+            orc.Equip(shield);
 
 
-            Axe axe1 = new Axe("Verdugo", 70, "Juicio final");
-            Warhammer warhammer1 = new Warhammer("Mjölnir", 90, "Aplastar y machacar");
+            Axe axe = new Axe("Verdugo", 70, "Juicio final");
+            Warhammer warhammer = new Warhammer("Mjölnir", 90, "Aplastar y machacar");
 
             Dwarf dwarf = new Dwarf("Thorin", 35, "Luchador");
-            dwarf.Equip(axe1);
-            dwarf.Equip(warhammer1);
+            dwarf.Equip(axe);
+            dwarf.Equip(warhammer);
 
-            Bow bow1 = new Bow ("Arco gigante", 75,"Tira fuego");
-            Cloak cloak1 = new Cloak ("Capa maxima", 85, "Invisibilidad");
+            Bow bow = new Bow ("Arco gigante", 75,"Tira fuego");
+            Cloak cloak = new Cloak ("Capa maxima", 85, "Invisibilidad");
             
-            Elf elf = new Elf ("Frank",15, "Escurridizo");
-            elf.Equip(bow1);
-            elf.Equip(cloak1); 
+            Elf elf = new Elf ("Galardiel",15, "Escurridizo");
+            elf.Equip(bow);
+            elf.Equip(cloak); 
 
-            SpellBook spellBook1 = new SpellBook("Libro de Hechizos Oscuros","Hechizos oscuros");  
-            Spell spell1 = new Spell("Lumos", "La varita enciende luz", 65, 0);
-            spellBook1.AddSpell(spell1);
+            SpellBook spellBook = new SpellBook("Libro de Hechizos Oscuros","Hechizos oscuros");  
+            Spell spell = new Spell("Lumos", "La varita enciende luz", 65, 0);
+            MagicStaff magicStaff = new MagicStaff("Baculo Oscuro",150, "Baculo perdido de Toran");
 
-            MagicStaff magicStaff1 = new MagicStaff("Baculo Oscuro",150, "Baculo perdido de Toran");
+            Wizard wizard = new Wizard("Harry", "Mago De Apoyo", spellBook);
 
-            Wizard wizard = new Wizard("Harry", "Mago De Apoyo", spellBook1);
-            wizard.Equip(magicStaff1);
-            wizard.LearnSpell(spell1);
+            dwarf.Attack(orc);
+            Console.WriteLine("👳 " + dwarf.Name + " cura a 🤢 " + orc.Name);
+            dwarf.HealCharacter(orc);
+            Console.WriteLine();
+
+            orc.Attack(wizard);
+            wizard.Respawn();
+            Console.WriteLine("La vida actual de 🧙 "+ wizard.Name + " ahora es: " + wizard.Health + " ❤");
+            Console.WriteLine();
+
+            elf.UnEquip(bow);
+            elf.Equip(sword);
+            Console.WriteLine("El daño total que causa 🧝‍♀️ " + elf.Name + " es: " + elf.TotalDamage() + " 🗡");
+            Console.WriteLine("El daño total que causa 🧝‍♀️ " + elf.Name + " es: " + elf.TotalProtection() + " 🛡");
+            Console.WriteLine();
+
+            orc.UnEquip(sword);
+            orc.Equip(axe);
+            Console.WriteLine("El daño total que causa 🤢 " + orc.Name + " es: " + orc.TotalDamage() + " 🗡");
+            Console.WriteLine("El daño total que causa 🤢 " + orc.Name + " es: " + orc.TotalProtection() + " 🛡"); 
+            Console.WriteLine();
+
+            dwarf.UnEquip(axe);
+            dwarf.Equip(shield);
+            Console.WriteLine("El daño total que causa 👳 " + dwarf.Name + " es: " + dwarf.TotalDamage() + " 🗡");
+            Console.WriteLine("El daño total que causa 👳 " + dwarf.Name + " es: " + dwarf.TotalProtection() + " 🛡");
+            Console.WriteLine();
+
+            wizard.Equip(magicStaff);
+            wizard.Equip(spellBook);
+            wizard.LearnSpell(spell);
+            Console.WriteLine();
+
+            Console.WriteLine("El daño total que causa 🧙 " + wizard.Name + " es: " + wizard.TotalDamage() + " 🗡");
+            Console.WriteLine("El daño total que causa 🧙 " + wizard.Name + " es: " + wizard.TotalProtection() + " 🛡");
+            Console.WriteLine();
+
+            wizard.UnEquip(magicStaff);
+            Console.WriteLine(magicStaff.Name + " fue quitado del inventario de " + wizard.Name);
+            Console.WriteLine();
+            wizard.Equip(sword);
+            wizard.Equip(shield);
+            Console.WriteLine("Se añadieron los items: " + sword.Name + " y " + shield.Name + " al inventario de " + wizard.Name);
+            Console.WriteLine("El daño de " + wizard.Name + " ahora es: " +  wizard.TotalDamage() + " 🗡");
+            Console.WriteLine("La protección de " + wizard.Name + " ahora es: " + wizard.TotalProtection() + " 🛡");
         }
     }
 }
