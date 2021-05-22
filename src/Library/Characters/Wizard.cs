@@ -1,67 +1,29 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 
 namespace RoleplayGame
 {
     public class Wizard : ICharacter
     {
-        public string name;
-        public string Name
-        {
-            get{return this.name;}
-        }
-
-        private int damage;
-        public int Damage
-        {
-            get{return this.damage;}
-        }
-
-        private int protection;
-        public int Protection
-        {
-            get{return this.protection;}
-        }      
-       
-        private int initialHealth = 100; 
-        public int InitialHealth
-        {
-            get{return this.initialHealth;}
-        }
+        public string Name{get; private set;}
+        public int Damage{get; private set;}
+        public int Health{get; private set;}
+        public string Role{get; private set;}
         
-        private int health;
-        public int Health
-        {
-            get{return this.health;}
-        }
+        private int initialHealth;
 
-        private string role;
-        public string Role
-        {
-            get{return this.role;}
-        }
+        public List<IItem> Inventary{get; private set;}
 
-        
-        private SpellBook spellBook;
-        public SpellBook SpellBook
-        {
-            get{return this.spellBook;}
-            set{this.spellBook = value;}
-        }
+        public SpellBook SpellBook {get; private set;}
 
-        private List<IItem> inventary;
-        public List<IItem> Inventary
-        {
-            get{return this.inventary;}
-        }
-        
 
         public Wizard(string name, string role, SpellBook spellBook)
         {
-            this.name = name;
-            this.health = initialHealth;
-            this.role = role;
-            this.inventary = new List<IItem>();
+            this.Name = name;
+            this.initialHealth = 100;
+            this.Health = initialHealth;
+            this.Role = role;
+            this.Inventary = new List<IItem>();
             this.SpellBook = spellBook;
         }
 
@@ -89,17 +51,17 @@ namespace RoleplayGame
 
         public void RecieveAttack(int damage)
         {
-            if(damage <= (this.health + this.TotalProtection()))
+            if(damage <= (this.Health + this.TotalProtection()))
             {
-                this.health -= (damage - this.TotalProtection());
+                this.Health -= (damage - this.TotalProtection());
             }
             else
             {
-                this.health = 0;
+                this.Health = 0;
             }  
         }
 
-        public void HealCharacter(ICharacter character) //HEAL() TIENE QUE ESTAR CREADO EN EL CHARACTER QUE RECIBE
+        public void HealCharacter(ICharacter character)
         {
             character.Heal();
             Console.WriteLine($"{character.Name} ahora tiene {character.Health} de vida.");
@@ -107,36 +69,36 @@ namespace RoleplayGame
 
         public void Heal()
         {   
-            if(this.health > 0)
+            if(this.Health > 0)
             {
-                this.health = initialHealth;
+                this.Health = this.initialHealth;
             }
             else
-                Console.WriteLine($"El {this.name} esta muerto. No se puede curar.");
+                Console.WriteLine($"El {this.Name} esta muerto. No se puede curar.");
         }
 
         public void Respawn()
         {
-            if(this.health <= 0)
+            if(this.Health <= 0)
             {
-                this.health = initialHealth;
+                this.Health = this.initialHealth;
             }
         }
 
         public int TotalDamage()
         {
             int totalDamage = 0;
-            foreach(IItem item in inventary)
+            foreach(IItem item in this.Inventary)
             {
                 totalDamage += item.Damage;
             }
-            return totalDamage + this.SpellBook.Damage + this.damage;
+            return totalDamage + this.SpellBook.Damage + this.Damage;
         }
 
         public int TotalProtection()
         {
             int totalProtection = 0;
-            foreach(IItem item in inventary)
+            foreach(IItem item in this.Inventary)
             {
                 totalProtection += item.Protection;
             }
@@ -147,15 +109,15 @@ namespace RoleplayGame
         {
             if(item.MagicItem && item.GetType() != typeof(SpellBook))
             {
-                this.inventary.Add(item);
+                this.Inventary.Add(item);
             }
         }
 
         public void UnEquip(IItem item)
         {   
-            if(inventary.Contains(item))
+            if(this.Inventary.Contains(item))
             {
-                this.inventary.Remove(item);
+                this.Inventary.Remove(item);
                 Console.WriteLine($"Se ha removido el item {item.Name} del personaje {this.Name}.");
             }
             else
@@ -171,4 +133,4 @@ namespace RoleplayGame
         }
 
     }
-}
+} */
