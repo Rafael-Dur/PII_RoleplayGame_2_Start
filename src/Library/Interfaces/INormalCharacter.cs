@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-     public interface ICharacterNormal : ICharacter, INormalItem
+     public interface INormalCharacter : ICharacter
      {
           List<INormalItem> Inventary {get; }
 

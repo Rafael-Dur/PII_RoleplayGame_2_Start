@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    public class SpellBook : IItem
+    public class SpellBook : IMagicAttackItem, IMagicProtectionItem
     {
         public string Name{get; private set;}
 

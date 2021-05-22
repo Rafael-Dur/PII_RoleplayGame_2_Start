@@ -2,13 +2,11 @@ using System;
 
 namespace RoleplayGame
 {
-    public class MagicStaff : IItem
+    public class MagicStaff : IMagicAttackItem
     {
         public string Name{get; private set;}
 
         public int Damage{get; private set;}
-
-        public int Protection{get; private set;}
 
         public string Description{get; private set;}
 

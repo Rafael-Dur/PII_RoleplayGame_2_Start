@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
 
-    public class Cloak : IItem
+    public class Cloak : IProtectionItem
     {
         public string Name{get; private set;}
 
