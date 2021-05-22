@@ -1,4 +1,4 @@
-﻿/* using System;
+﻿using System;
 using RoleplayGame;
 
 namespace Program
@@ -41,4 +41,3 @@ namespace Program
         }
     }
 }
- */
