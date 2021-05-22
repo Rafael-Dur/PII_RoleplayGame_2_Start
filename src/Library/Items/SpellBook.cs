@@ -5,39 +5,19 @@ namespace RoleplayGame
 {
     public class SpellBook : IItem
     {
-        private string name;
-        public string Name
-        {
-            get{return this.name;}
-        }
-        private int damage;
-        public int Damage
-        {
-            get{return this.damage;}
-        }
-        private int protection;
-        public int Protection
-        {
-            get{return this.protection;}
-        }
-        private string description;
-        public string Description
-        {
-            get{return this.description;}
-            set{this.description = value;}
-        }
+        public string Name{get; private set;}
 
-        private bool magicItem;
-        public bool MagicItem
-        {
-            get{return this.magicItem = true;}
-        }
+        public int Damage{get; private set;}
+
+        public int Protection{get; private set;}
+
+        public string Description{get; private set;}
         public List<Spell> spells;
 
 
         public SpellBook(string name, string description)
         {
-            this.name = name;            
+            this.Name = name;            
             this.Description = description;
             this.spells = new List<Spell>();
         }
@@ -58,7 +38,7 @@ namespace RoleplayGame
                 totalDamage += spell.Damage;
             }
 
-            this.damage = totalDamage;
+            this.Damage = totalDamage;
         }
 
         private void UpdateBookSpellProtection()
@@ -69,7 +49,7 @@ namespace RoleplayGame
                 totalProtection += spell.Protection;
             }
 
-            this.protection = totalProtection;
+            this.Protection = totalProtection;
         }
         
 

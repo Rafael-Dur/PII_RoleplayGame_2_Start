@@ -1,4 +1,4 @@
-using NUnit.Framework;
+/* using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -145,4 +145,4 @@ namespace Test.Library
             Assert.AreEqual(dwarf.InitialHealth, newHealth);
         }
     }
-}
+} */

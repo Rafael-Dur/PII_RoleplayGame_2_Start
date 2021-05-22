@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,63 +7,25 @@ namespace RoleplayGame
     
     public class Elf : ICharacter
     {
-         private string name;
-        public string Name 
-        {
-            get
-            {
-                return this.name;
-            }
-        }
+         public string Name{get; private set;}
+        public int Damage{get; private set;}
+        public int Health{get; private set;}
+        public string Role{get; private set;}
+        
+        private int initialHealth;
 
-        private int damage;
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-        }        
-    
-        private int initialHealth = 100;
-        public int InitialHealth 
-        {
-            get
-            {
-                return this.initialHealth;
-            }
-        }
-        private int health;
-
-        public int Health
-        {
-            get{return this.health;}
-        }
-
-        private string role;
-        public string Role
-        {
-            get
-            {
-                return this.role;
-            }
-        }
-
-        private List<IItem> inventary;
-        public List<IItem> Inventary
-        {
-            get{return this.inventary;}
-        }
+        public List<IItem> Inventary{get; private set;}
 
     
 
         public Elf(string name, int damage, string role)
         {
-            this.name = name;
-            this.damage = damage;
-            this.health = initialHealth;
-            this.role = role;
-            this.inventary = new List<IItem>();
+            this.Name = name;
+            this.Damage = damage;
+            this.initialHealth = 100;
+            this.Health = initialHealth;
+            this.Role = role;
+            this.Inventary = new List<IItem>();
         }        
         
         //Este metodo ataca a un personaje:
@@ -91,13 +53,13 @@ namespace RoleplayGame
 
         public void RecieveAttack(int damage)
         {
-                if(damage <= (this.health + this.TotalProtection()))
+                if(damage <= (this.Health + this.TotalProtection()))
                 {
-                    this.health -= (damage - TotalProtection());
+                    this.Health -= (damage - TotalProtection());
                 }
                 else
                 {
-                    this.health = 0;
+                    this.Health = 0;
                 }
             }
 
@@ -109,21 +71,21 @@ namespace RoleplayGame
 
         public void Heal()
         {   
-            if(this.health > 0)
+            if(this.Health > 0)
             {
-                this.health = initialHealth;
+                this.Health = initialHealth;
             }
             else
                 {
-                    Console.WriteLine($"El {this.name} esta muerto. No se puede curar.");
+                    Console.WriteLine($"El {this.Name} esta muerto. No se puede curar.");
                 }
         }
 
         public void Respawn()
         {
-            if(this.health <= 0)
+            if(this.Health <= 0)
             {
-                this.health = initialHealth;
+                this.Health = this.initialHealth;
             }
         }
 
@@ -131,7 +93,7 @@ namespace RoleplayGame
         {   
             if(item.MagicItem == false)
             {
-                this.inventary.Add(item);
+                this.Inventary.Add(item);
             }
             else
                 {
@@ -141,9 +103,9 @@ namespace RoleplayGame
 
         public void UnEquip(IItem item)
         {   
-            if(inventary.Contains(item))
+            if(this.Inventary.Contains(item))
             {
-                this.inventary.Remove(item);
+                this.Inventary.Remove(item);
                 Console.WriteLine($"Se ha removido el item {item.Name} del personaje {this.Name}.");
             }
             else
@@ -155,11 +117,11 @@ namespace RoleplayGame
         public int TotalDamage()
         {
             int totalDamage = 0;
-            foreach(IItem item in inventary)
+            foreach(IItem item in this.Inventary)
             {
                 totalDamage += item.Damage;
             }
-            totalDamage += this.damage;
+            totalDamage += this.Damage;
             
             return totalDamage;
         }
@@ -167,7 +129,7 @@ namespace RoleplayGame
         public int TotalProtection()
         {
             int totalProtection = 0;
-            foreach(IItem item in inventary)
+            foreach(IItem item in this.Inventary)
             {
                 totalProtection += item.Protection;
             }
@@ -175,4 +137,4 @@ namespace RoleplayGame
         }
     }
     
-}
+} */
