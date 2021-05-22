@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-     public interface ICharacterMagic : ICharacter, IItem
+     public interface IMagicCharacter : ICharacter
      {
           List<IItem> Inventary {get; }
 

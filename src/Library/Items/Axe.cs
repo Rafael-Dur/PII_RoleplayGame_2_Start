@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
 
-    public class Axe : IItem
+    public class Axe : IAttackItem
     {
         public string Name{get; private set;}
 

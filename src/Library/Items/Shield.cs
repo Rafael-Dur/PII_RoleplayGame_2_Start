@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace RoleplayGame
 {
 
-    public class Shield : IItem
+    public class Shield : IProtectionItem
     {
         public string Name{get; private set;}
 

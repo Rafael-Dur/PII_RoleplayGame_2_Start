@@ -2,7 +2,7 @@ using System;
 
 namespace RoleplayGame
 {
-    public class Spell : IItem
+    public class Spell 
     {
         public string Name{get; private set;}
 

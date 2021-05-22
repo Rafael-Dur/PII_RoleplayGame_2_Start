@@ -1,4 +1,4 @@
-/* using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,7 +14,7 @@ namespace RoleplayGame
         
         private int initialHealth;
 
-        public List<IItem> Inventary{get; private set;}
+        public List<INormalItem> Inventary{get; private set;}
 
     
 
@@ -25,7 +25,7 @@ namespace RoleplayGame
             this.initialHealth = 100;
             this.Health = initialHealth;
             this.Role = role;
-            this.Inventary = new List<IItem>();
+            this.Inventary = new List<INormalItem>();
         }        
         
         //Este metodo ataca a un personaje:
@@ -89,19 +89,12 @@ namespace RoleplayGame
             }
         }
 
-        public void Equip(IItem item)
+        public void Equip(INormalItem item)
         {   
-            if(item.MagicItem == false)
-            {
-                this.Inventary.Add(item);
-            }
-            else
-                {
-                    Console.WriteLine($"El {item.Name} no se puede agregar ya que no se puede equipar un item magico.");
-                } 
+            this.Inventary.Add((INormalItem)item);  
         }
 
-        public void UnEquip(IItem item)
+        public void UnEquip(INormalItem item)
         {   
             if(this.Inventary.Contains(item))
             {
@@ -117,9 +110,13 @@ namespace RoleplayGame
         public int TotalDamage()
         {
             int totalDamage = 0;
-            foreach(IItem item in this.Inventary)
+            foreach(INormalItem item in this.Inventary)
             {
-                totalDamage += item.Damage;
+                if(typeof(IAttackItem).IsInstanceOfType(item))
+                {
+                    totalDamage += ((IAttackItem)item).Damage;
+                }
+                
             }
             totalDamage += this.Damage;
             
@@ -129,12 +126,15 @@ namespace RoleplayGame
         public int TotalProtection()
         {
             int totalProtection = 0;
-            foreach(IItem item in this.Inventary)
+            foreach(INormalItem item in this.Inventary)
             {
-                totalProtection += item.Protection;
+                if(typeof(IProtectionItem).IsInstanceOfType(item))
+                {
+                    totalProtection += ((IProtectionItem)item).Protection;
+                }
             }
             return totalProtection;
         }
     }
     
-} */
+}

@@ -1,4 +1,4 @@
-/* using System;
+using System;
 using System.Collections.Generic;
 
 namespace RoleplayGame
@@ -90,7 +90,14 @@ namespace RoleplayGame
             int totalDamage = 0;
             foreach(IItem item in this.Inventary)
             {
-                totalDamage += item.Damage;
+                if(typeof(IAttackItem).IsInstanceOfType(item))
+                {
+                    totalDamage += ((IAttackItem)item).Damage;
+                }
+                else if(typeof(IMagicAttackItem).IsInstanceOfType(item))
+                {
+                    totalDamage += ((IMagicAttackItem)item).Damage;
+                }
             }
             return totalDamage + this.SpellBook.Damage + this.Damage;
         }
@@ -100,17 +107,21 @@ namespace RoleplayGame
             int totalProtection = 0;
             foreach(IItem item in this.Inventary)
             {
-                totalProtection += item.Protection;
+                if(typeof(IProtectionItem).IsInstanceOfType(item))
+                {
+                    totalProtection += ((IProtectionItem)item).Protection;
+                }
+                else if(typeof(IMagicProtectionItem).IsInstanceOfType(item))
+                {
+                    totalProtection += ((IMagicProtectionItem)item).Protection;
+                }
             }
             return totalProtection + this.SpellBook.Protection;
         } 
 
         public void Equip(IItem item)
-        {
-            if(item.MagicItem && item.GetType() != typeof(SpellBook))
-            {
-                this.Inventary.Add(item);
-            }
+        {   
+            this.Inventary.Add((IItem)item);  
         }
 
         public void UnEquip(IItem item)
@@ -133,4 +144,4 @@ namespace RoleplayGame
         }
 
     }
-} */
+}
