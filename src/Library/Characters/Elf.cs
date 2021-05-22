@@ -4,8 +4,22 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    
-    public class Elf : ICharacter
+    /* 
+    •La clase Elf cumple con el patron Expert ya que:
+    - Es la clase experta en conocer el daño total de las instancias de la clase Elf
+      y tambien tiene las responsabilidades de ejecutar un ataque y de recibir un ataque.
+     
+    •La clase Elf no cumple con el principio SRP ya que tiene más de una razón de cambio, 
+    las cuales por ejemplo, pueden ser:
+    - Cambiar el comportamiento del ataque
+    - Cambiar el cómo se calcula el daño total de un Elfo
+    - Cambiar el cómo se calcula la protección total de un Elfo
+    - Cambiar el modo en que se recibe un ataque
+
+    • Como es un personaje de tipo INormalCharacter, puedo usar cualquier item subtipo de 
+    INormalItem por el principio de sustitucion. */
+
+    public class Elf : INormalCharacter
     {
          public string Name{get; private set;}
         public int Damage{get; private set;}
@@ -33,21 +47,21 @@ namespace RoleplayGame
         {
             if(character.Health > 0)
             {
-                Console.WriteLine($"{this.Name} ataca a {character.Name}");
+                Console.WriteLine($"{this.Name} ⚔ ataca a {character.Name}");
                 character.RecieveAttack(this.TotalDamage());
 
                 if(character.Health <= 0)
                 {
-                    Console.WriteLine($"{character.Name} fue asesinado.");
+                    Console.WriteLine($"{character.Name} fue asesinado 💔");
                 }
                 else
                 {
-                    Console.WriteLine($"{character.Name} tiene {character.Health} de vida.");
+                    Console.WriteLine($"{character.Name} tiene {character.Health} de vida ❤");
                 }
             }
             else
                 {
-                    Console.WriteLine($"No se puede atacar a {character.Name} ya que se encuentra muerto");
+                    Console.WriteLine($"No se puede atacar a {character.Name} ya que se encuentra muerto 💔");
                 }
         }
 
@@ -66,7 +80,7 @@ namespace RoleplayGame
         public void HealCharacter(ICharacter character)
         {
             character.Heal();
-            Console.WriteLine($"{character.Name} ahora tiene {character.Health} de vida.");
+            Console.WriteLine($"{character.Name} ahora tiene {character.Health} de vida ❤");
         }
 
         public void Heal()
@@ -77,7 +91,7 @@ namespace RoleplayGame
             }
             else
                 {
-                    Console.WriteLine($"El {this.Name} esta muerto. No se puede curar.");
+                    Console.WriteLine($"{this.Name} esta muerto/a. No se puede curar 💔");
                 }
         }
 
@@ -103,7 +117,7 @@ namespace RoleplayGame
             }
             else
                 {
-                    Console.WriteLine($"El {item.Name} no se puede removew ya que no se encuentra añadido al personaje.");
+                    Console.WriteLine($"El item {item.Name} no se puede remover ya que no se encuentra añadido al personaje.");
                 } 
         }
 

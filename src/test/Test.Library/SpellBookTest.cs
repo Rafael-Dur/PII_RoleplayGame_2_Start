@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -15,7 +15,6 @@ namespace Test.Library
         {
             spellBook = new SpellBook("Libro", "Libro con hechizos");
             spell = new Spell("Expecto patronum", "Invoca un Patronus", 20, 40);
-            
         }
 
         [Test]
@@ -88,10 +87,5 @@ namespace Test.Library
             //Assert
             Assert.AreEqual(2, spellBook.spells.Count);
         }
-
-        
-
     }
-
-
-} */
+}

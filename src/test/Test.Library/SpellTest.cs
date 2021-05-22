@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -57,15 +57,5 @@ namespace Test.Library
         {
             Assert.AreEqual(20, spell.Protection);
         }
-
-        [Test]
-        public void SpellIsMagicItem()
-        {
-            Assert.IsTrue(spell.MagicItem);
-        }
-        
-
     }
-
-
-} */
+}

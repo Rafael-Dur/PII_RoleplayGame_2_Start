@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
+    /* La clase Cloak cumple con el patron Expert, ya que es la clase experta en conocer el nombre 
+    y poder de este item para poder cumplir con la responsabilidad de construir una capa nueva.
+    Cumple con el principio SRP ya que no hay más de una razón de cambio. */
 
     public class Cloak : IProtectionItem
     {

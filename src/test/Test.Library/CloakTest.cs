@@ -1,4 +1,4 @@
-/* using NUnit.Framework;
+using NUnit.Framework;
 using RoleplayGame;
 
 namespace Test.Library
@@ -10,7 +10,7 @@ namespace Test.Library
         [SetUp]
         public void SetUp()
         {
-            cloak = new Cloak("Capa maxima", 0, 85, "Invisibilidad");
+            cloak = new Cloak("Capa maxima", 85, "Agilidad");
         }
 
         [Test]
@@ -37,12 +37,5 @@ namespace Test.Library
         {
             Assert.IsNotNull(cloak.Name);
         }
-
-        [Test]
-        public void ItemNotMagic()
-        //Se prueba que no sea un item de daño magico sino que en cambio sea de daño fisico.
-        {
-            Assert.AreEqual(false,cloak.MagicItem);
-        }
     }
-} */
+}
