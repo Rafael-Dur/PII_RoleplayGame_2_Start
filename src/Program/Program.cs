@@ -42,25 +42,26 @@ namespace Program
 
             orc.Attack(wizard);
             wizard.Respawn();
+            Console.WriteLine(wizard.Name + " ha respawneado");
             Console.WriteLine("La vida actual de 🧙 "+ wizard.Name + " ahora es: " + wizard.Health + " ❤");
             Console.WriteLine();
 
             elf.UnEquip(bow);
             elf.Equip(sword);
             Console.WriteLine("El daño total que causa 🧝‍♀️ " + elf.Name + " es: " + elf.TotalDamage() + " 🗡");
-            Console.WriteLine("El daño total que causa 🧝‍♀️ " + elf.Name + " es: " + elf.TotalProtection() + " 🛡");
+            Console.WriteLine("La protección total de 🧝‍♀️ " + elf.Name + " es: " + elf.TotalProtection() + " 🛡");
             Console.WriteLine();
 
             orc.UnEquip(sword);
             orc.Equip(axe);
             Console.WriteLine("El daño total que causa 🤢 " + orc.Name + " es: " + orc.TotalDamage() + " 🗡");
-            Console.WriteLine("El daño total que causa 🤢 " + orc.Name + " es: " + orc.TotalProtection() + " 🛡"); 
+            Console.WriteLine("La protección total de 🤢 " + orc.Name + " es: " + orc.TotalProtection() + " 🛡"); 
             Console.WriteLine();
 
             dwarf.UnEquip(axe);
             dwarf.Equip(shield);
             Console.WriteLine("El daño total que causa 👳 " + dwarf.Name + " es: " + dwarf.TotalDamage() + " 🗡");
-            Console.WriteLine("El daño total que causa 👳 " + dwarf.Name + " es: " + dwarf.TotalProtection() + " 🛡");
+            Console.WriteLine("La protección total de 👳 " + dwarf.Name + " es: " + dwarf.TotalProtection() + " 🛡");
             Console.WriteLine();
 
             wizard.Equip(magicStaff);
@@ -69,17 +70,16 @@ namespace Program
             Console.WriteLine();
 
             Console.WriteLine("El daño total que causa 🧙 " + wizard.Name + " es: " + wizard.TotalDamage() + " 🗡");
-            Console.WriteLine("El daño total que causa 🧙 " + wizard.Name + " es: " + wizard.TotalProtection() + " 🛡");
+            Console.WriteLine("La protección total de 🧙 " + wizard.Name + " es: " + wizard.TotalProtection() + " 🛡");
             Console.WriteLine();
 
             wizard.UnEquip(magicStaff);
-            Console.WriteLine(magicStaff.Name + " fue quitado del inventario de " + wizard.Name);
             Console.WriteLine();
             wizard.Equip(sword);
             wizard.Equip(shield);
             Console.WriteLine("Se añadieron los items: " + sword.Name + " y " + shield.Name + " al inventario de " + wizard.Name);
-            Console.WriteLine("El daño de " + wizard.Name + " ahora es: " +  wizard.TotalDamage() + " 🗡");
-            Console.WriteLine("La protección de " + wizard.Name + " ahora es: " + wizard.TotalProtection() + " 🛡");
+            Console.WriteLine("El daño total que causa 🧙 " + wizard.Name + " ahora es: " +  wizard.TotalDamage() + " 🗡");
+            Console.WriteLine("La protección total de 🧙 " + wizard.Name + " ahora es: " + wizard.TotalProtection() + " 🛡");
         }
     }
 }
